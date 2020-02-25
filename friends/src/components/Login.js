@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { axiosWithAuth, axios } from '../utils/axiosWithAuth';
 
 
 const Login = props => {
-  const [credentials, setCredentials] = useState ({
+  const history = useHistory();
+  const [ credentials, setCredentials ] = useState ({
     username:'',
     password:''
-  });
+  }); 
+  const [ isLoading, setIsLoading ] = useState(false)
 
   const handleChange = e => {
     setCredentials({
@@ -17,6 +21,15 @@ const Login = props => {
 
   const login = e => {
     e.preventDefault();
+    axiosWithAuth()
+    .post('/api/login', credentials)
+    .then(res => {
+      console.log("this is res", res)
+      window.localStorage.setItem('token', res.data.payload);
+      history.push('/friendslist')
+      
+    })
+    .catch(err => console.log("this is the error", err));
 
   }
 
@@ -33,7 +46,7 @@ const Login = props => {
         />
         <label htmlFor="username">Password: </label>
         <input
-          type="text"
+          type="password"
           name="password"
           value={credentials.password}
           onChange={handleChange}

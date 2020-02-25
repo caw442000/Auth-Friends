@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Login from './components/Login';
-import NewFriendForm from './components/NewFriendForm';
+import AddFriendForm from './components/AddFriendForm';
+import FriendsList from './components/FriendsList';
 import './App.css';
 
 
@@ -12,7 +13,10 @@ function App() {
         <Route path="/login">
           <Login />
         </Route>
-        <NewFriendForm/>
+        <Route exact path="/friendslist">
+          <FriendsList />
+        </Route>
+        <AddFriendForm/>
       </div>
     </Router>
   );
