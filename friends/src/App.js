@@ -11,15 +11,11 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <ul>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/friendslist">Friends List</Link>
-          </li>
-        </ul>
-        <Route path="/login">
+        <nav>
+          <Link to="/login">Login</Link>
+          <Link to="/friendslist">Friends List</Link>
+        </nav>
+        <Route exact path="/login">
           <Login />
         </Route>
         <PrivateRoute exact path="/friendslist">
@@ -27,8 +23,7 @@ function App() {
         </PrivateRoute>
         <PrivateRoute path="/addfriend">
           <AddFriendForm/>
-        </PrivateRoute>
-        
+        </PrivateRoute>     
       </div>
     </Router>
   );
