@@ -35,6 +35,7 @@ const AddFriendForm = props => {
     .then(res => {
       console.log("this is the response from adding friend", res)
       history.push('/friendslist')
+
     })
     .catch(err => console.log("error adding friend", err));
 

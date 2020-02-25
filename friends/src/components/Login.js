@@ -2,6 +2,16 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { axiosWithAuth, axios } from '../utils/axiosWithAuth';
 
+import ClipLoader from "react-spinners/ClipLoader";
+import { css } from "@emotion/core";
+
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
+
 
 const Login = props => {
   const history = useHistory();
@@ -45,7 +55,13 @@ const Login = props => {
   return(
     <div>
         {isLoading ? (
-          <div>Trying to Log you in you{console.log( "trying to login")}</div>
+          <ClipLoader
+          css={override}
+          size={150}
+          //size={"150px"} this also works
+          color={"#123abc"}
+          loading={isLoading}
+        />
         ) : (
       <form onSubmit = {login}>
         <label htmlFor="username">Username: </label>

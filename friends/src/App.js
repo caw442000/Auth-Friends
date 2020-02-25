@@ -11,6 +11,14 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <ul>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/friendslist">Friends List</Link>
+          </li>
+        </ul>
         <Route path="/login">
           <Login />
         </Route>
