@@ -4,6 +4,7 @@ import Login from './components/Login';
 import AddFriendForm from './components/AddFriendForm';
 import FriendsList from './components/FriendsList';
 import './App.css';
+import PrivateRoute from './components/PrivateRoute';
 
 
 function App() {
@@ -13,10 +14,13 @@ function App() {
         <Route path="/login">
           <Login />
         </Route>
-        <Route exact path="/friendslist">
+        <PrivateRoute exact path="/friendslist">
           <FriendsList />
-        </Route>
-        <AddFriendForm/>
+        </PrivateRoute>
+        <PrivateRoute path="/addfriend">
+          <AddFriendForm/>
+        </PrivateRoute>
+        
       </div>
     </Router>
   );

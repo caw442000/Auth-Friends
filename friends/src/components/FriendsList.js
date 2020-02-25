@@ -9,7 +9,7 @@ const FriendsList = props => {
     axiosWithAuth()
     .get('/api/friends')
     .then(res => {
-      console.log("this is the response for getting friends", res)
+      console.log("this is the response for getting friends", res.data)
       setFriends(res.data)
     })
   },[]);
@@ -17,7 +17,14 @@ const FriendsList = props => {
   
   return (
     <div>
-      <p>Friends List </p>
+      {friends.map(friend => (
+        <div key={friend.id}>
+          <h2>{friend.name}</h2>
+          <p>{friend.age}</p>
+          <p >{friend.email}</p>
+
+        </div>
+      ))}
     </div>
   );
 };
