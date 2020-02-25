@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Login from './components/Login';
 import NewFriendForm from './components/NewFriendForm';
 import './App.css';
@@ -6,10 +7,14 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Login />
-      <NewFriendForm/>
-    </div>
+    <Router>
+      <div className="App">
+        <Route path="/login">
+          <Login />
+        </Route>
+        <NewFriendForm/>
+      </div>
+    </Router>
   );
 }
 
