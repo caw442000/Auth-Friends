@@ -4,7 +4,7 @@ export const axios = () => {
 
   const token = window.localStorage.getItem('token');
 
-  retun axios.create({
+  return axios.create({
     headers: {
       authorization: token
     },
