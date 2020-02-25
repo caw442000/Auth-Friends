@@ -21,21 +21,32 @@ const Login = props => {
 
   const login = e => {
     e.preventDefault();
+    setIsLoading(true);
+    
     axiosWithAuth()
     .post('/api/login', credentials)
     .then(res => {
       console.log("this is res", res)
       window.localStorage.setItem('token', res.data.payload);
       history.push('/friendslist')
+      setIsLoading(false);
+
       
     })
-    .catch(err => console.log("this is the error", err));
+    .catch(err => {
+      console.log("this is the error", err)
+      setIsLoading(false);
+
+    });
 
   }
 
 
   return(
     <div>
+        {isLoading ? (
+          <div>Trying to Log you in you{console.log( "trying to login")}</div>
+        ) : (
       <form onSubmit = {login}>
         <label htmlFor="username">Username: </label>
         <input
@@ -53,6 +64,9 @@ const Login = props => {
         />
         <button>Login</button>
       </form>
+
+        )}
+
     </div>
   )
 }
